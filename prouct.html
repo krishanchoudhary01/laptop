@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Laptop Products | Laptop Store</title>
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+  <header>
+    <h1>Laptop Store</h1>
+    <nav>
+      <div class="navbar">
+        <div class="nav-links">
+          <a href="Home.html">Home</a>
+          <a href="loginn.html">Login</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <input type="text" placeholder="Search laptops..." class="search-box" id="searchBox">
+      </div>
+    </nav>
+  </header>
+
+  <section class="product-list">
+    <div class="product-card">
+      <img src="https://images-eu.ssl-images-amazon.com/images/I/818mIRsyj1L.jpg" alt="Laptop 1">
+      <h3 class="product-title">Dell Inspiron</h3>
+      <p>Price: ₹45,999</p>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://yantragyan.com/wp-content/uploads/2022/06/HP-Pavilion-is-HPs-most-popular-laptop-lineup-1024x752.webp" alt="Laptop 2">
+      <h3 class="product-title">HP Pavilion</h3>
+      <p>Price: ₹52,499</p>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i0.wp.com/www.laptopmedia.com/wp-content/uploads/2022/04/notebook-inspiron-14-5420-2-in-1-gy-fpr-gallery-4.jpg?fit=2464%2C1472&ssl=1" alt="Laptop 3">
+      <h3 class="product-title">Lenovo IdeaPad</h3>
+      <p>Price: ₹48,799</p>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://laptopmedia.com/wp-content/uploads/2022/06/2-17.jpg" alt="Laptop 4">
+      <h3 class="product-title">Asus VivoBook</h3>
+      <p>Price: ₹43,299</p>
+      <button>Buy Now</button>
+    </div>
+  </section>
+
+  <!-- 🛑 No Laptop Found Message -->
+  <p id="noResultsMessage" style="text-align:center; color: red; font-weight:bold; display:none;">“No laptops found”</p>
+
+  <!-- 🔍 Search Function JavaScript -->
+  <script>
+    const searchInput = document.getElementById("searchBox");
+    const productCards = document.querySelectorAll(".product-card");
+    const noResultsMessage = document.getElementById("noResultsMessage");
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      let visibleCount = 0;
+
+      productCards.forEach((card) => {
+        const title = card.querySelector(".product-title").textContent.toLowerCase();
+        if (title.includes(query)) {
+          card.style.display = "inline-block";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      // Show/hide "No laptops found" message
+      if (visibleCount === 0) {
+        noResultsMessage.style.display = "block";
+      } else {
+        noResultsMessage.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>

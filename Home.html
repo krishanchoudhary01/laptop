@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Laptop Store | Home</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">LaptopStore</div>
+    <nav>
+      <div class="navbar">
+        <div class="nav-links">
+          <a href="Home.html">Home</a>
+          <a href="prouct.html">Products</a>
+          <a href="loginn.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a href="cart.html">🛒 Cart</a>
+        </div>
+        <div class="search-container">
+          <input type="text" placeholder="Search laptops..." class="search-box" id="searchInput">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to LaptopStore</h1>
+    <p>Your one-stop shop for the latest laptops!</p>
+    <a href="#" class="btn">Shop Now</a>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="products">
+    <h2>Featured Laptops</h2>
+    <div class="product-list" id="productList">
+      <div class="product-card">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61ItfhQmaFL._SL1000_.jpg" alt="Laptop 1" />
+        <h3>Gaming Beast X1</h3>
+        <p>₹85000</p>
+        <button class="btn add-to-cart" data-name="Gaming Beast X1" data-price="85000">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/09/asus-rog-zephyrus-g14-14-165hz-gaming-laptop.jpg" alt="Laptop 2" />
+        <h3>Ultra Slim Y2</h3>
+        <p>₹65000</p>
+        <button class="btn add-to-cart" data-name="Ultra Slim Y2" data-price="65000">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.55Wg0s3ScYJM0KObpt5DGAHaFu?pid=Api&P=0&h=180" alt="Laptop 3" />
+        <h3>ProBook Z5</h3>
+        <p>₹72000</p>
+        <button class="btn add-to-cart" data-name="ProBook Z5" data-price="72000">Add to Cart</button>
+      </div>
+    </div>
+
+    <p id="noResults" style="text-align: center; color: red; font-weight: bold; display: none;">
+      “No laptops found”
+    </p>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // 🔍 Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const products = document.querySelectorAll('.product-card');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      let visibleCount = 0;
+
+      products.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        if (name.includes(query)) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+
+    // 🛒 Add to Cart Functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const price = parseFloat(button.getAttribute('data-price'));
+
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${name} added to cart!`);
+      });
+    });
+  </script>
+
+</body>
+</html>

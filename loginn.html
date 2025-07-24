@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auth Page | Laptop Store</title>
+  <link rel="stylesheet" href="loginn.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Login Form -->
+    <div id="loginForm">
+      <h2>Login</h2>
+      <form onsubmit="redirectToHome(event)">
+        <input type="text" placeholder="Email or Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <div class="link">
+        <p><a onclick="showForm('forgotForm')">Forgot Password?</a></p>
+        <p>Don't have an account? <a onclick="showForm('signupForm')">Sign Up</a></p>
+        <p><a href="Home.html">← Back to Home</a></p>
+      </div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signupForm" class="hidden">
+      <h2>Sign Up</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Create Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="link">
+        <p>Already have an account? <a onclick="showForm('loginForm')">Login</a></p>
+        <p><a href="Home.html">← Back to Home</a></p>
+      </div>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div id="forgotForm" class="hidden">
+      <h2>Forgot Password</h2>
+      <form>
+        <input type="email" placeholder="Enter your registered email" required>
+        <button type="submit">Send Reset Link</button>
+      </form>
+      <div class="link">
+        <p>Remember your password? <a onclick="showForm('loginForm')">Back to Login</a></p>
+        <p><a href="Home.html">← Back to Home</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showForm(formId) {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("signupForm").classList.add("hidden");
+      document.getElementById("forgotForm").classList.add("hidden");
+      document.getElementById(formId).classList.remove("hidden");
+    }
+
+    // Redirect to home page after login
+    function redirectToHome(e) {
+      e.preventDefault(); // prevent form from refreshing
+      window.location.href = "Home.html"; // redirect
+    }
+  </script>
+
+</body>
+</html>
