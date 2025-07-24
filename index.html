@@ -17,7 +17,6 @@
           <a href="prouct.html">Products</a>
           <a href="loginn.html">Login</a>
           <a href="contact.html">Contact</a>
-          <a href="cart.html">🛒 Cart</a>
         </div>
         <div class="search-container">
           <input type="text" placeholder="Search laptops..." class="search-box" id="searchInput">
@@ -41,19 +40,19 @@
         <img src="https://images-na.ssl-images-amazon.com/images/I/61ItfhQmaFL._SL1000_.jpg" alt="Laptop 1" />
         <h3>Gaming Beast X1</h3>
         <p>₹85000</p>
-        <button class="btn add-to-cart" data-name="Gaming Beast X1" data-price="85000">Add to Cart</button>
+        <button class="btn buy-now" data-name="Gaming Beast X1">Buy Now</button>
       </div>
       <div class="product-card">
         <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/09/asus-rog-zephyrus-g14-14-165hz-gaming-laptop.jpg" alt="Laptop 2" />
         <h3>Ultra Slim Y2</h3>
         <p>₹65000</p>
-        <button class="btn add-to-cart" data-name="Ultra Slim Y2" data-price="65000">Add to Cart</button>
+        <button class="btn buy-now" data-name="Ultra Slim Y2">Buy Now</button>
       </div>
       <div class="product-card">
         <img src="https://tse4.mm.bing.net/th/id/OIP.55Wg0s3ScYJM0KObpt5DGAHaFu?pid=Api&P=0&h=180" alt="Laptop 3" />
         <h3>ProBook Z5</h3>
         <p>₹72000</p>
-        <button class="btn add-to-cart" data-name="ProBook Z5" data-price="72000">Add to Cart</button>
+        <button class="btn buy-now" data-name="ProBook Z5">Buy Now</button>
       </div>
     </div>
 
@@ -86,25 +85,11 @@
       noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     });
 
-    // 🛒 Add to Cart Functionality
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    document.querySelectorAll('.add-to-cart').forEach(button => {
+    // 🛒 Buy Now Functionality
+    document.querySelectorAll('.buy-now').forEach(button => {
       button.addEventListener('click', () => {
         const name = button.getAttribute('data-name');
-        const price = parseFloat(button.getAttribute('data-price'));
-
-        // Check if product already in cart
-        const existingItem = cart.find(item => item.name === name);
-
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          cart.push({ name, price, quantity: 1 });
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${name} added to cart!`);
+        alert(`Thank you for buying ${name}!`);
       });
     });
   </script>
