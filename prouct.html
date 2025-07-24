@@ -12,7 +12,7 @@
     <nav>
       <div class="navbar">
         <div class="nav-links">
-          <a href="index.html">Home</a>
+          <a href="Home.html">Home</a>
           <a href="loginn.html">Login</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -49,12 +49,34 @@
       <p>Price: ₹43,299</p>
       <button>Buy Now</button>
     </div>
+
+    <!-- ✅ Added Product 5 -->
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/QK/JY/MY-27730643/lenovo-laptop.jpg" alt="Laptop 5">
+      <h3 class="product-title">Lenovo Legion 5i</h3>
+      <p>Price: ₹89,999</p>
+      <button>Buy Now</button>
+    </div>
+
+    <!-- ✅ Added Product 6 -->
+    <div class="product-card">
+      <img src="https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0504/users/6058fa4c1f0460a46389211b14744c75dcba2d69/i-img1200x1200-17137727255zn2fs138456.jpg" alt="Laptop 6">
+      <h3 class="product-title">Apple MacBook Air M1</h3>
+      <p>Price: ₹92,900</p>
+      <button>Buy Now</button>
+    </div>
+
+    <!-- ✅ Added Product 7 -->
+    <div class="product-card">
+      <img src="https://d3d71ba2asa5oz.cloudfront.net/12021940/images/nx.khdaa.006_2.jpg" alt="Laptop 7">
+      <h3 class="product-title">Acer Aspire E5</h3>
+      <p>Price: ₹37,499</p>
+      <button>Buy Now</button>
+    </div>
   </section>
 
-  <!-- 🛑 No Laptop Found Message -->
   <p id="noResultsMessage" style="text-align:center; color: red; font-weight:bold; display:none;">“No laptops found”</p>
 
-  <!-- 🔍 Search Function JavaScript -->
   <script>
     const searchInput = document.getElementById("searchBox");
     const productCards = document.querySelectorAll(".product-card");
@@ -74,7 +96,6 @@
         }
       });
 
-      // Show/hide "No laptops found" message
       if (visibleCount === 0) {
         noResultsMessage.style.display = "block";
       } else {
